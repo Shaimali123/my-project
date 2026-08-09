@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Method</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .background-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(Untitled.jpg); 
+            background-size: cover;
+            background-position: center;
+            filter: blur(3px);
+            background-attachment: fixed; 
+            z-index: -1;
+            background-color: rgba(0, 0, 0, 0.5); 
+            mix-blend-mode: multiply;
+        }
+
+        .styled-button {
+            background-color: #ccf904; 
+            color: rgb(7, 7, 7);              
+            padding: 15px 32px;        
+            font-size: 16px;            
+            border: none;              
+            border-radius: 8px;        
+            cursor: pointer;            
+            transition: all 0.3s ease-in-out; 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .styled-button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); 
+        }
+
+        h1 {
+            color: rgb(7, 196, 234);
+            font-size: 50px;
+            animation: fadeIn 2s ease-in-out; 
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .menu-container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-top: 100px;
+        }
+
+        .payment-section {
+            margin: 50px auto;
+            padding: 20px;
+            width: 50%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-section h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .form-group {
+            margin: 20px 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .cash-message, .qr-code {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .qr-code img {
+            width: 150px;
+            height: 150px;
+        }
+
+        @media (max-width: 768px) {
+            .payment-section {
+                width: 90%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background-blur"></div> 
+    <div class="menu-container">
+        <h1><u>PAYMENT METHOD</u></h1>
+    </div>
+
+    <!-- Payment Section -->
+    <div class="payment-section">
+        <h2>Select Payment Option</h2>
+        <form>
+            <div class="form-group">
+                <label>
+                    <input type="radio" name="payment-method" value="cash" onclick="showPaymentOption('cash')"> Cash
+                </label>
+                <label>
+                    <input type="radio" name="payment-method" value="online" onclick="showPaymentOption('online')"> Online Payment
+                </label>
+            </div>
+
+            <!-- Cash Message -->
+            <div class="cash-message" id="cash-message">
+                Go to the cash counter to pay in cash.
+                <button class="OK-button">OK</button>
+            </div>
+
+            <!-- QR Code for Online Payment -->
+            <div class="qr-code" id="qr-code">
+                <p>Scan the QR Code to pay online:</p>
+                <img src="QR code.jpg" alt="QR Code">
+                <p>After Payment take an screenshot of oru Payment Page </p>
+                <button class="OK-button">OK</button>
+            </div>
+        </form>
+    </div>
+    <a href="menu.html">
+        <button class="OK-button">Back to Menu</button>
+    </a>
+    <style>
+        .OK-button {
+            padding: 15px 30px;
+            background-color: #FF5733; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: background-color 0.3s ease;
+        }
+        
+        .back-to-menu-btn:hover {
+            background-color: #e64a19;
+        }
+    </style>
+
+    <script>
+        function showPaymentOption(option) {
+            const cashMessage = document.getElementById('cash-message');
+            const qrCode = document.getElementById('qr-code');
+
+            if (option === 'cash') {
+                cashMessage.style.display = 'block';
+                qrCode.style.display = 'none';
+            } else if (option === 'online') {
+                cashMessage.style.display = 'none';
+                qrCode.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

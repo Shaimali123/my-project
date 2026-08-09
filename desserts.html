@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .background-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(restaurant.jpg.webp); 
+            background-size: cover;
+            background-position: center;
+            filter: blur(3px); 
+            z-index: -1;
+        }
+        h1 {
+            text-align: center;
+            color: white; 
+        }
+        .menu {
+            max-width: 75%;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 20px;
+            box-shadow:  rgba(20, 19, 19, 0.1);
+        }
+        .menu-section {
+            margin-bottom: 40px;
+        }
+        .menu-section h2 {
+            border-bottom: 2px solid #e6e6e6;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .menu-item span {
+            font-size: 16px;
+        }
+        .menu-item .price {
+            font-weight: bold;
+            color: #333;
+        }
+        .menu-item img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+        
+        .menu-item button {
+            padding: 15px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .menu-item button:hover {
+            background-color: #45a049;
+        }
+       
+        .cart {
+            display: none;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        .cart h2 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e6e6e6;
+            padding-bottom: 10px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .cart-item .name {
+            font-weight: bold;
+        }
+        
+        .view-cart-btn {
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: block;
+            margin: 0 auto;
+        }
+        .view-cart-btn:hover {
+            background-color: #007bb5;
+        }
+        
+        .confirm-order-btn {
+            padding: 10px 15px;
+            background-color: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            margin: 20px auto 0;
+        }
+        .confirm-order-btn:hover {
+            background-color: #e68900;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-blur"></div> 
+    <h1>Restaurant Food Menu</h1>
+    <button class="view-cart-btn" onclick="toggleCart()">View Cart</button>
+    <div id="cart" class="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <p>Total: ₹<span id="cart-total">0.00</span></p>
+        <button class="confirm-order-btn" onclick="confirmOrder()">Confirm Order</button>
+    </div>
+
+    <div class="menu">
+        <div class="menu-section">
+            <h2>Desserts</h2>
+            <div class="menu-item">
+                <img src="chocolate-cake.jpg" alt="Chocolate Cake">
+                <span>Chocolate Cake</span>
+                <span class="price">₹69</span>
+                <button onclick="addToCart('Chocolate Cake', 69)">Order</button>
+            </div>
+            <div class="menu-item">
+                <img src="ice-cream-sundae.jpg" alt="Ice Cream Sundae">
+                <span>Ice Cream Sundae</span>
+                <span class="price">₹120</span>
+                <button onclick="addToCart('Ice Cream Sundae', 120)">Order</button>
+            </div>
+            <div class="menu-item">
+                <img src="apple-pie.jpg" alt="Apple Pie">
+                <span>Apple Pie</span>
+                <span class="price">₹130</span>
+                <button onclick="addToCart('Apple Pie', 130)">Order</button>
+            </div>
+            <div class="menu-item">
+                <img src="cheesecake.jpg" alt="Cheesecake">
+                <span>Cheesecake</span>
+                <span class="price">₹79</span>
+                <button onclick="addToCart('Cheesecake', 79)">Order</button>
+            </div>
+            <div class="menu-item">
+                <img src="tiramisu.jpg" alt="Tiramisu">
+                <span>Tiramisu</span>
+                <span class="price">₹199</span>
+                <button onclick="addToCart('Tiramisu', 199)">Order</button>
+            </div>
+            <div class="menu-item">
+                <img src="Lemon And Mint Ice Cream.webp" alt="lemon and Mint ice-cream">
+                <span>Lemon And Mint Ice Cream</span>
+                <span class="price">₹99</span>
+                <button onclick="addToCart('Tiramisu', 99)">Order</button>
+            </div>
+            <div class="menu-item">
+                <img src="Red Velvet Oreo Brownie.webp" alt="Red Velvet Oreo Brownie">
+                <span>Red Velvet Oreo Brownie</span>
+                <span class="price">₹229</span>
+                <button onclick="addToCart('Tiramisu', 229)">Order</button>
+            </div>
+            <div class="menu-item">
+                <img src="Avallaki Payasa.webp" alt="Avallaki Payasa">
+                <span>Avallaki Payasa</span>
+                <span class="price">₹109</span>
+                <button onclick="addToCart('Tiramisu', 109)">Order</button>
+            </div>
+            <div class="menu-item">
+                <img src="Beetroot Halwa.webp" alt="Beetroot Halwa">
+                <span>Beetroot Halwa</span>
+                <span class="price">₹99</span>
+                <button onclick="addToCart('Tiramisu', 99)">Order</button>
+            </div>
+            <div class="menu-item">
+                <img src="Homemade Ferrero Rocher.webp" alt="Homemade Ferrero Rocher">
+                <span>Homemade Ferrero Rocher</span>
+                <span class="price">₹79</span>
+                <button onclick="addToCart('Tiramisu', 79)">Order</button>
+            </div>
+            <div class="menu-item">
+                <img src="seetaphal rabdi.webp" alt="seetaphal rabdi">
+                <span>seetaphal rabdi</span>
+                <span class="price">₹120</span>
+                <button onclick="addToCart('Tiramisu', 120)">Order</button>
+            </div>
+        </div>
+    </div> 
+    <a href="menu.html">
+        <button class="back-to-menu-btn">Back to Menu</button>
+    </a>
+    <style>
+        .back-to-menu-btn {
+            padding: 15px 30px;
+            background-color: #FF5733; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: background-color 0.3s ease;
+        }
+        
+        .back-to-menu-btn:hover {
+            background-color: #e64a19;
+        }
+    </style>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(itemName, itemPrice) {
+           
+            cart.push({ name: itemName, price: itemPrice });
+            total += itemPrice;
+
+            
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+           
+            cartItemsContainer.innerHTML = '';
+
+           
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `<span class="name">${item.name}</span><span>₹${item.price.toFixed(2)}</span>`;
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+           
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        function toggleCart() {
+            const cartElement = document.getElementById('cart');
+            
+            if (cartElement.style.display === 'none' || cartElement.style.display === '') {
+                cartElement.style.display = 'block';
+            } else {
+                cartElement.style.display = 'none';
+            }
+
+           
+            displayCart();
+        }
+
+        function confirmOrder() {
+            if (cart.length === 0) {
+                alert("Your cart is empty! Please add items before confirming the order.");
+                return;
+            }
+            
+            
+            let orderSummary = "Your Order:\n";
+            cart.forEach(item => {
+                orderSummary += `${item.name}: ₹${item.price.toFixed(2)}\n`;
+            });
+            orderSummary += `\nTotal: $${total.toFixed(2)}\n\nThank you for your order!`;
+            alert(orderSummary);
+
+          
+            cart = [];
+            total = 0;
+            displayCart();
+            toggleCart(); 
+        }
+    </script>
+        
+</body>
+</html>

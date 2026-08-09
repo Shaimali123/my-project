@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .background-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(Untitled.jpg); 
+            background-size: cover;
+            background-position: center;
+            filter: blur(3px);
+            background-attachment: fixed; 
+            z-index: -1;
+            background-color: rgba(0, 0, 0, 0.5); 
+            mix-blend-mode: multiply;
+        }
+
+        .styled-button {
+            background-color: #ccf904; 
+            color: rgb(7, 7, 7);              
+            padding: 15px 32px;        
+            font-size: 16px;            
+            border: none;              
+            border-radius: 8px;        
+            cursor: pointer;            
+            transition: all 0.3s ease-in-out; 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .styled-button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); 
+        }
+
+        .styled-button:active {
+            transform: scale(0.95);
+        }
+
+        h1 {
+            color: rgb(7, 196, 234);
+            font-size: 50px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .menu-container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-top: 100px;
+        }
+
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px; 
+            }
+            .styled-button {
+                padding: 10px 24px; 
+                font-size: 14px;
+            }
+            .menu-container {
+                margin-top: 50px;
+            }
+        }
+
+        
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0,0,0,0.8);
+            padding: 10px;
+            color: white;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #45a049;
+        }
+
+        footer i {
+            font-size: 20px;
+        }
+
+        
+        .styled-button-butter {
+            background-color: #f7d774; 
+            color: rgb(7, 7, 7);              
+            padding: 15px 32px;        
+            font-size: 16px;            
+            border: none;              
+            border-radius: 8px;        
+            cursor: pointer;            
+            transition: all 0.3s ease-in-out; 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .styled-button-butter:hover {
+            background-color: #f4c542; 
+            transform: scale(1.05);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .styled-button-butter:active {
+            transform: scale(0.95);
+        }
+    </style>
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="background-blur"></div> 
+    <div class="menu-container">
+        <h1><u>MENU</u></h1>
+
+        <a href="Starters.html">
+            <button class="styled-button">
+                <i class="fas fa-utensils" style="margin-right: 8px;"></i> Starters
+            </button>
+        </a>
+        <br><br>
+        <a href="Main Course.html">
+            <button class="styled-button">
+                <i class="fas fa-drumstick-bite" style="margin-right: 8px;"></i> Main Course
+            </button>
+        </a>
+        <br><br>
+        <a href="desserts.html">
+            <button class="styled-button">
+                <i class="fas fa-ice-cream" style="margin-right: 8px;"></i> Desserts
+            </button>
+        </a>
+        <br><br>
+        <a href="juice-smoothies.html">
+            <button class="styled-button">
+                <i class="fas fa-blender" style="margin-right: 8px;"></i> Juice & Smoothie
+            </button>
+        </a>
+        <br><br>
+        <a href="payment.html">
+            <button class="styled-button-butter">
+                <i class="fas fa-cheese" style="margin-right: 8px;"></i> Better Payment
+            </button>
+        </a>
+    </div>
+
+    
+    <footer>
+        <p>Follow Us: 
+            <a href="#" target=""><i class="fab fa-facebook"></i></a> 
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a> 
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </p>
+    </footer>
+</body>
+</html>
